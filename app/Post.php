@@ -25,7 +25,13 @@ class Post extends Model
         //prikazace postove koji su published zbog true
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_ide');
     }
 }

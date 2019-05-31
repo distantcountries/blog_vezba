@@ -16,9 +16,9 @@ use App\Post; //obavezno juzovati posts
 use \App\Http\Controllers\PostController;
 use \App\Http\Controllers\CommentsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Route::get('/posts', function () {
@@ -39,7 +39,8 @@ Route::get('/', function () {
 //     return view('posts.show' , compact('post'));
 // });
 
-
+Route::get('/', ['as' => 'all-posts', 
+                    'uses' => 'PostsController@index']);
 
 Route::get('/posts', ['as' => 'all-posts', 
                     'uses' => 'PostsController@index']);
@@ -47,10 +48,8 @@ Route::get('/posts', ['as' => 'all-posts',
 Route::get('/posts/create', ['as' => 'create-post', 
                     'uses' => 'PostsController@create']);
 
-Route::get('/posts/{id}', ['as' => 'single-posts', 
+Route::get('/posts/{id}', ['as' => 'single-post', 
                 'uses' => 'PostsController@show']); 
-                //rute sa dinamickim prosledjivanjem idu ispod
-
 
 Route::post('/posts', ['as' => 'store-post',
                         'uses' => 'PostsController@store']);
@@ -59,12 +58,17 @@ Route::post('/posts', ['as' => 'store-post',
 Route::post('/posts/{postId}/comments', ['as' => 'comments-post',
                         'uses' => 'CommentsController@store']);
 
-Route::get('/register', 'RegisterController@create');
 
+Route::get('/register', 'RegisterController@create');
 Route::post('/register', 'RegisterController@store');
 
-Route::get('/logout', 'LoginController@destroy');
 
-Route::get('/login', 'LoginController@create');
+Route::get('/logout', 'LoginController@destroy');
 Route::post('/login', 'LoginController@store');
+Route::get('/login', 'LoginController@create');
+
+
+
+Route::get('/users/{id}', ['as' => 'single-user', 
+                'uses' => 'UsersController@show']); 
 

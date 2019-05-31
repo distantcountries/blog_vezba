@@ -10,7 +10,9 @@ class CommentsController extends Controller
     public function store($postId) 
     {
         $post = Post::find($postId);
+
         $post->comments()->create(request()->all());
-        return redirect()->route('single-posts',['id' => $postId]);
+        
+        return redirect()->route('single-post',['id' => $postId]);
     }
 }

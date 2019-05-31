@@ -23,8 +23,18 @@
         @include('partials.error-message' , ['fieldTitle' => 'password'])
     </div>
 
-    <div class="form-control">
-        <button type="submit">Submit</button>
+    <div class="form-group">
+        <button type="submit"
+            style="
+                width: 100%;
+                background-color: #ccd9ff;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;"
+            onmouseover="this.style.background='#cce6ff'"
+            onmouseout="this.style.background='#ccd9ff'">Submit</button>
     </div>
 
 </form>
